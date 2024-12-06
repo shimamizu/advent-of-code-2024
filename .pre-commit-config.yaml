@@ -13,12 +13,10 @@ repos:
     hooks:
     -   id: check-merge-conflict
     -   id: check-added-large-files
-        exclude: "^scripts/python/acls/"
     -   id: check-yaml
     -   id: check-toml
     -   id: debug-statements
     -   id: end-of-file-fixer
-        exclude: "^scripts/python/acls/"
     -   id: trailing-whitespace
 
   - repo: https://github.com/pre-commit/pygrep-hooks
