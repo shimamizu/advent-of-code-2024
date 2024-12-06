@@ -35,8 +35,8 @@ exclude = [
 line-length = 132
 indent-width = 4
 
-# Assume Python 3.8
-target-version = "py39"
+# Use Python 3.11
+target-version = "py311"
 
 [lint]
 # Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
@@ -54,8 +54,11 @@ ignore = [
     "D203", # one-blank-line-before-class
     "D211", # blank-line-before-class
     "D213", # multi-line-summary-second-line
+    "FBT001", # boolean-type-hint-positional-argument
+    "FBT002", # boolean-default-value-positional-argument
     "G004", # logging-f-string
-    "PERF203", # try-except-in-loop
+    "PLW0603", # global-statement
+    "PLW2901", # redefined-loop-name
     "PLR0912", # too-many-branches
     "PLR0915", # too-many-statements
     "I001", # unsorted-imports (based on isort, but we sort with ruff logic)
@@ -68,7 +71,6 @@ ignore = [
     "SLF001", # private-member-access
     "T201", # print
     "T203", # pprint
-    "UP007", # non-pep604-annotation -> 3.9 can't support X | Y annotation types, don't add this ignore to v2 which is 3.11
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
