@@ -25,7 +25,7 @@ example_data: str = "7 6 4 2 1\n" "1 2 7 8 9\n" "9 7 6 2 1\n" "1 3 2 4 5\n" "8 6
 
 def increase_decrease_same(report: list[int], index: int) -> str:
     """Check if increasing or decreasing."""
-    index_next = index + 1
+    index_next: int = index + 1
     too_high: int = 4
     if abs(report[index] - report[index_next]) >= too_high:
         return "unsafe"
@@ -39,13 +39,13 @@ def increase_decrease_same(report: list[int], index: int) -> str:
 def check_if_safe(report: list[int]) -> tuple[str, int]:
     """Check if the report is safe or unsafe."""
     report_length: int = len(report)
-    report_loop = report_length - 1
+    report_loop: int = report_length - 1
     list_type_start: str = increase_decrease_same(report, 0)
     report_index: int = 1
     if list_type_start == "unsafe":
         return ("UNSAFE", report_index)
     while report_index < report_loop:
-        list_type_now = increase_decrease_same(report, report_index)
+        list_type_now: str = increase_decrease_same(report, report_index)
         if list_type_start != list_type_now or list_type_now == "unsafe":
             return ("UNSAFE", report_index + 1)
         report_index += 1
@@ -55,10 +55,10 @@ def check_if_safe(report: list[int]) -> tuple[str, int]:
 def main(input_data: str) -> None:
     """Calculate if levels are safe."""
     master_list: list[str] = [line.strip() for line in input_data.splitlines()]
-    report_list = []
+    report_list: list = []  # type: ignore[type-arg]
     report_list = [list(map(int, report.split())) for report in master_list]
     how_many_safe: int = 0
-    unsafe_list = []
+    unsafe_list: list = []  # type: ignore[type-arg]
     for report in report_list:
         report_safety, report_index = check_if_safe(report)
         if report_safety == "SAFE":
@@ -69,7 +69,7 @@ def main(input_data: str) -> None:
 
     for report in unsafe_list:
         for index, _item in enumerate(report):
-            copy = report.copy()
+            copy: list = report.copy()  # type: ignore[type-arg]
             copy.pop(index)
             report_safety, report_index = check_if_safe(copy)
             if report_safety == "SAFE":
